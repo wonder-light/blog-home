@@ -1,0 +1,637 @@
+/* 获取太阳或者月亮的背景 */
+@mixin sun-bg($bg:#ff6e51, $start:1, $end:4) {
+    @for $i from $start through $end {
+        &:nth-of-type(#{$i}) {
+            @if $i < 4 {
+                background: #{$bg}#{nth(ff 7f 4c, $i)};
+            } @else {
+                box-shadow: 0 0 50px #{$bg}7f;
+            }
+        }
+    }
+}
+
+/* 设置宽度与高度 */
+@mixin w-h($width:auto, $height:auto) {
+    width: $width;
+    height: $height;
+}
+
+
+:root {
+    --bgColor: #ffa55cff;
+    --firstBgColor: linear-gradient(to top, #ffa55c, #ff9f31);
+    --hillColor1: #733136;
+    --hillColor2: #83373b;
+    --hillColor3: #a24850;
+    --hillColor4: #dd666b;
+    --earth: linear-gradient(to top right, #ca7075, #7e3235);
+    --cao: linear-gradient(to top, #ca7075, #7e3235);
+    --titleColor: #ff4520;
+    --titleShadow: 2px 2px 0px #ffffffcc, 0 0 10px #0000007f;
+    --iconShadow: 0 0 5px white;
+}
+
+@font-face {
+    font-family: wdnmd;
+    src: url("../fonts/1.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: wdnmd, serif;
+}
+
+body {
+    min-height: 750px;
+    scroll-behavior: smooth;
+    background-color: var(--bgColor);
+
+    &::-webkit-scrollbar {
+        @include w-h(8px, 1px);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #fff;
+        border-radius: 20px;
+    }
+}
+
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.block {
+    display: block;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.content-center {
+    align-content: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-items-center {
+    justify-items: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+.top-0, .inset-0, .inset-y-0 {
+    top: 0;
+}
+
+.bottom-0, .inset-0, .inset-y-0 {
+    bottom: 0;
+}
+
+.left-0, .inset-0, .inset-x-0 {
+    left: 0;
+}
+
+.right-0, .inset-0, .inset-x-0 {
+    right: 0;
+}
+
+.inset-x-center {
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.inset-y-center {
+    left: 50%;
+    transform: translate(0, -50%);
+}
+
+.inset-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.border-radius {
+    border-radius: 50%;
+}
+
+.transition-normal {
+    transition: all 0.3s;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 100;
+}
+
+.title-shadow {
+    text-shadow: var(--titleShadow);
+}
+
+#sakura-id {
+    z-index: 100;
+}
+
+.love-des-box {
+    color: var(--titleColor);
+    z-index: 20;
+    @extend .title-shadow;
+
+    .title {
+        font-size: 6rem;
+    }
+
+    .sub-title {
+        font-size: 2rem;
+        margin: 0.75rem 0;
+    }
+}
+
+.box-ul {
+    font-size: 1rem;
+
+    li {
+        margin: 0 0.75rem;
+
+        span {
+            top: 100%;
+            font-size: 0.9rem;
+            background: var(--titleColor);
+            color: white;
+            text-shadow: none;
+            border-radius: 10px;
+            box-shadow: var(--iconShadow);
+            @extend .overflow-hidden;
+            @extend .visible;
+            @extend .opacity-0;
+        }
+
+        &:hover {
+            i {
+                transform: scale(1.2) rotate(5deg);
+            }
+
+            span {
+                padding: 5px;
+                top: 140%;
+                z-index: 4;
+                @extend .visible;
+                @extend .opacity-100;
+            }
+        }
+    }
+
+    a {
+        color: var(--titleColor);
+        font-size: 1.8rem;
+        text-shadow: var(--iconShadow);
+    }
+}
+
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* v-clock */
+[v-cloak] {
+    display: none;
+}
+
+/* 侧栏按钮 */
+.sidebar {
+    right: 50px;
+    bottom: 50px;
+    z-index: 15;
+}
+
+.sidebar-content {
+    @include w-h(50px, 50px);
+    background: var(--hillColor4);
+    color: #ffffffcc;
+    font-size: 1.8rem;
+    box-shadow: #00000030 0 10px 20px, #0000003a 0 6px 6px;
+    transition: all 0.15s;
+    opacity: 0.8;
+    @extend .border-radius;
+
+    &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+
+        span {
+            text-shadow: 0 0 5px black;
+            @extend .visible;
+            @extend .opacity-100;
+        }
+    }
+
+    &:active {
+        transform: scale(0.8);
+    }
+
+    span {
+        right: 120%;
+        font-size: 1.2rem;
+        @extend .invisible;
+        @extend .opacity-0;
+    }
+
+    b {
+        margin: 0 2px;
+    }
+}
+
+
+.sidebarDarkText {
+    color: #8841a7;
+    @extend .title-shadow;
+}
+
+.sidebarWhiteText {
+    color: #ff4520;
+    @extend .title-shadow;
+}
+
+/* 首页 */
+.love-content {
+    overflow: hidden;
+    background: var(--firstBgColor);
+}
+
+.cloud-con {
+    content: "";
+    @include w-h(80px, 80px);
+    background-color: white;
+    @extend .block;
+    @extend .absolute;
+    @extend .border-radius;
+}
+
+/* 首页云朵 */
+.cloud {
+    @include w-h(200px, 50px);
+    min-width: 120px;
+    background-color: white;
+    border-radius: 50px;
+    z-index: 5;
+    animation: cloud 3s ease-in-out infinite;
+    opacity: 0.5;
+
+    @for $i from 1 through 4 {
+        &:nth-of-type(#{$i}) {
+            top: nth(10% 26% 13% 18%, $i);
+            @if $i <=2 {
+                left: nth(0% 28%, $i);
+            } @else {
+                right: nth(28% 4%, $i - 2);
+            }
+            animation-duration: #{3 + random() * 1.2}s;
+        }
+    }
+
+    &::before {
+        content: "";
+        right: 10%;
+        @extend .cloud-con;
+        @extend .bottom-0;
+    }
+
+    &::after {
+        content: "";
+        left: 10%;
+        @include w-h(100px, 100px);
+        @extend .cloud-con;
+        @extend .bottom-0;
+    }
+}
+
+/* 云朵动画 */
+@keyframes cloud {
+    0% {
+        transform: translateX(15px);
+    }
+
+    50% {
+        transform: translateX(-15px);
+    }
+
+    100% {
+        transform: translateX(15px);
+    }
+}
+
+
+/* 太阳与月亮 */
+.sunlightOrMoon {
+    animation: sunlightOrMoon 1s ease-in-out infinite;
+    transition: all 0.5s;
+    right: 30%;
+    top: 25%;
+    z-index: 1;
+    @extend .absolute;
+
+    div {
+        @include w-h(150px, 150px);
+        @extend .absolute;
+        @extend .border-radius;
+        @extend .transition-normal;
+
+        @for $i from 1 through 4 {
+            &:nth-of-type(#{$i}) {
+                z-index: #{5 - $i};
+                transform: scale(nth(1 1.3 1.6 1.6, $i));
+            }
+        }
+    }
+
+}
+
+@keyframes sunlightOrMoon {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* 太阳或月亮隐藏 */
+.sunOrMoonHide {
+    top: 100% !important;
+}
+
+/* 太阳 */
+.sun {
+    div {
+        @include sun-bg(#ff6e51)
+    }
+}
+
+/* 月亮 */
+.moon {
+    div {
+        @include sun-bg(#fdfdfd)
+    }
+}
+
+
+/* 山峰 */
+.hill {
+    @include w-h(800px, 800px);
+    background-color: white;
+    border-radius: 50px;
+    transform: rotate(-45deg);
+    z-index: 3;
+    @extend .absolute;
+    @extend .overflow-hidden;
+
+    div {
+        @include w-h(70%, 70%);
+        box-shadow: 0 0 10px #0000004c;
+        border-radius: 10px;
+        @extend .absolute;
+        @extend .transition-normal;
+
+        @for $i from 1 through 4 {
+            &:nth-of-type(#{$i}) {
+                top: #{$i - 1}#{0%};
+                left: #{$i - 1}#{0%};
+                right: #{3 - $i + 1}#{0%};
+                bottom: #{3 - $i + 1}#{0%};
+                background-color: var(--hillColor#{$i});
+            }
+        }
+    }
+
+    @for $i from 1 through 2 {
+        &:nth-of-type(#{$i}) {
+            @if $i < 2 {
+                left: -10%;
+                bottom: -500px;
+            } @else {
+                @include w-h(700px, 700px);
+                right: -5%;
+                bottom: -450px;
+            }
+        }
+    }
+}
+
+.arch-con {
+    content: "";
+    @include w-h(10px, 35px);
+    background: var(--cao);
+    @extend .block;
+    @extend .absolute;
+    @extend .bottom-0;
+}
+
+/* 大地 */
+.earth {
+    height: 20%;
+    background: var(--earth);
+    z-index: 3;
+    box-shadow: 0 0 10px #0000007f;
+    @extend .w-full;
+    @extend .absolute;
+    @extend .bottom-0;
+
+    .arch {
+        @for $i from 1 through 4 {
+            &:nth-of-type(#{$i}) {
+                &::before, &::after {
+                    @extend .arch-con;
+                }
+
+                &::before {
+                    left: 15px;
+                    height: #{$i + 2}0px;
+                }
+
+                @if $i == 4 {
+                    &::after {
+                        left: -20px;
+                        height: 50px;
+                    }
+
+                    @extend .arch-con;
+                }
+
+                top: nth(10px 0 50% 40%, $i);
+                left: nth(25% auto auto 40%, $i);
+                right: nth(auto 35% 20% auto, $i);
+                @extend .absolute;
+            }
+        }
+        @extend .transition-normal;
+    }
+}
+
+/* 房屋 */
+.house {
+    top: -40px;
+    left: 55%;
+    transform: scale(0.8);
+    @extend .absolute;
+
+    .house-main {
+        background: linear-gradient(45deg, #9b4600, #c9722b);
+        @include w-h(50px, 50px);
+        @extend .absolute;
+        @extend .top-0;
+        @extend .left-0;
+
+        &::before {
+            content: "";
+            @include w-h(10px, 30px);
+            background: rgb(155, 70, 0);
+            top: -30px;
+            right: 5px;
+            @extend .block;
+            @extend .absolute;
+        }
+
+        &::after {
+            content: "";
+            @include w-h(0, 0);
+            border-bottom: 35px solid #9b4600;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            top: -50%;
+            @extend .block;
+            @extend .absolute;
+            @extend .inset-x-center;
+        }
+    }
+
+    .smoke {
+        @for $i from 1 through 8 {
+            &:nth-of-type(#{$i}) {
+                @include w-h(10px, 10px);
+                background: #4b4b4bcc;
+                left: 35px;
+                bottom: 20px;
+                z-index: -1;
+                @if $i <= 4 {
+                    animation: houseCloudRight 5s ease-in-out infinite;
+                } @else {
+                    animation: houseCloudLeft 5s ease-in-out infinite;
+                }
+                animation-delay: nth(0.3s 1.5s 0.7s 1.9s 0.2s 1.4s 0.6s 1.8s, $i);
+                @extend .absolute;
+                @extend .border-radius;
+            }
+        }
+    }
+}
+
+
+/* 烟囱 */
+@keyframes houseCloudRight {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(45px) translateY(-330px) scale(4.3);
+        opacity: 0.1;
+    }
+}
+
+@keyframes houseCloudLeft {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-45px) translateY(-330px) scale(4.3);
+        opacity: 0;
+    }
+}

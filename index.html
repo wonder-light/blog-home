@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes" name="viewport">
+  <title>百叶小世界</title>
+  <meta content="always" name="referrer">
+  <meta content="百叶,小世界,博客,主页" name="keywords">
+  <meta content="百叶的小世界，个人博客主页" name="description">
+  <meta content="nianian" property="og:site_name">
+  <meta content="Object" property="og:type">
+  <meta content="http://www.nianian.cn" property="og:url">
+  <meta content="百叶小世界" itemprop="name" property="og:title">
+  <meta content="百叶的小世界，个人博客主页" property="og:description">
+  <meta content="" itemprop="image" property="og:image">
+  <link href="img/icon/favicon.png" rel="icon">
+  <link href="img/icon/favicon-128x128.png" rel="shortcut icon">
+  <link href="css/index.min.css" rel="stylesheet">
+  <script crossorigin="anonymous" src="https://kit.fontawesome.com/7b04f31bc8.js"></script>
+</head>
+<body class="relative h-screen transition-normal">
+  <canvas class="fixed inset-0 pointer-events-none" id="sakura-id"></canvas>
+  <div class="relative w-full h-full" id="love">
+    <div class="fixed sidebar" id="sidebar">
+      <div class="relative cursor-pointer flex items-center justify-center sidebar-content">
+        <i class="fa fa-moon-o"></i>
+        <span class="absolute nowrap bold transition-normal">切换<b class="sidebarDarkText">暗</b>色</span>
+      </div>
+    </div>
+    <div class="relative w-full h-full love-content transition-normal">
+      <div class="absolute cloud"></div>
+      <div class="absolute cloud"></div>
+      <div class="absolute cloud"></div>
+      <div class="absolute cloud"></div>
+      <div class="absolute inset-0 transition-normal" id="love-box">
+        <div class="hill">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="hill">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="earth">
+          <div class="arch"></div>
+          <div class="arch"></div>
+          <div class="arch"></div>
+          <div class="arch"></div>
+          <div class="house">
+            <div class="house-main"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+          </div>
+        </div>
+        <div class="absolute inset-center flex flex-col items-center love-des-box">
+          <h1 class="title">我是百叶</h1>
+          <p class="sub-title">爱好编程，运动，旅行，摄影与冰激凌</p>
+          <ul class="flex justify-items-center box-ul">
+            <li>
+              <a class="relative" href="http://blog.nianian.cn" target="_blank">
+                <i class="fa fa-blog transition-normal"></i>
+                <span class="absolute inset-x-center bold nowrap transition-normal">Blog</span>
+              </a>
+            </li>
+            <li>
+              <a class="relative" href="https://gitee.com/wonder-light" target="_blank">
+                <i class="fa-brands fa-github transition-normal"></i>
+                <span class="absolute inset-x-center bold nowrap transition-normal">Github</span>
+              </a>
+            </li>
+            <li>
+              <a class="relative" href="https://gitee.com/wonder-light" target="_blank">
+                <i class="fa-brands fa-gitlab transition-normal"></i>
+                <span class="absolute inset-x-center bold nowrap transition-normal">Gitee</span>
+              </a>
+            </li>
+            <li>
+              <a class="relative" href="mailto:3209752489@qq.com" target="_blank">
+                <i class="fa fa-envelope transition-normal"></i>
+                <span class="absolute inset-x-center bold nowrap transition-normal">Email</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sunlightOrMoon sun" id="sun" style="top: 25%; right: 30%;">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="sunlightOrMoon moon sunOrMoonHide" id="moon" style="top: 25%; right: 30%;">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/index.min.js" type="module"></script>
+</body>
+</html>
