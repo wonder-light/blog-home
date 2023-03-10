@@ -1,0 +1,4 @@
+.idea/*
+node_modules/*
+css/index.min.css
+js/index.min.js
