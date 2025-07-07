@@ -7,7 +7,7 @@ const { series, dest, src, watch } = gulp;
  * css处理
  * -----------------
  */
-    
+
     // sass处理
 const sass = require('gulp-sass')(require('sass'));
 // 合并 CSS、JavaScript
@@ -31,7 +31,7 @@ const replace = require('gulp-replace');
  * ts/js处理
  * -----------------
  */
-    
+
     // ts/js 转换
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
@@ -93,7 +93,7 @@ function htmlTask() {
 
 // ts处理
 function jsTask() {
-    return src(['js/*.js', '!js/index.min.js'])
+    return src(['js/*.js', '!js/*.min.js'])
     .pipe(babel({ // 编译es6语法
         presets: [
             ['@babel/preset-env']

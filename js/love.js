@@ -1,5 +1,3 @@
-import loveData from './data.js';
-
 /**
  * 首页动画
  */
@@ -36,14 +34,11 @@ export function changeTheme() {
         window.localStorage.setItem('theme', theme = 'white');
     }
 
-    // 图标修改
-    loveData.themeSelect = theme;
-
     // 循环修改配色
-    const themes = loveData.themes[theme];
-    for (let key in themes) {
+    document.documentElement.setAttribute('theme', theme);
+    /*for (let key in themes) {
         document.documentElement.style.setProperty(key, themes[key]);
-    }
+    }*/
     console.log('theme', theme);
     console.log('sun', `sunlightOrMoon sun ${ theme === 'white' ? '' : 'sunOrMoonHide' }`);
     console.log('moon', `sunlightOrMoon moon ${ theme !== 'white' ? '' : 'sunOrMoonHide' }`);
