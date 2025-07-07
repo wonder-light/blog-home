@@ -1,0 +1,49 @@
+name: Deploy Actions # 名字自取
+
+on:
+  push:
+    # 忽略某些文件和目录，自行定义
+    paths:
+      - 'css/**'
+      - 'fonts/**'
+      - 'js/**'
+      - 'img/**'
+      - 'pages/**'
+      - 'index.html'
+    workflow_dispatch:
+    branches:
+      - main  # 这里的意思是当 main 分支发生 push 的时候，运行下面的 jobs
+
+jobs:
+  # 部署作业，因为我们只是在部署
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest  # 在什么环境运行任务
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: |
+          npm run build
+          mkdir public
+          cp -r index.html CNAME ./public
+          cp -r ./pages/* ./js ./css ./img ./fonts ./public
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 上传 page 的路径
+          path: './public'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
