@@ -2,26 +2,26 @@
 export function sakuraEffect() {
     const canvas = document.getElementById('sakura-id');
     const ctx = canvas.getContext('2d');
-    
+
     //樱花图片
     let img = new Image();
-    img.src = '/img/ice.png';
+    img.src = './img/ice.png';
     let list = [];
     let snowsLen = 30;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    
+
     //监听窗口大小
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     });
-    
+
     // 初始化100个雪花
     for (let i = 0; i < snowsLen; i++) {
         addSakura();
     }
-    
+
     // 增加一个樱花
     function addSakura() {
         let speedY = Math.random() * 0.8 + 0.8;
@@ -37,7 +37,7 @@ export function sakuraEffect() {
             speedY: speedY,
         });
     }
-    
+
     //画樱花
     function drawSakura() {
         // 清除
@@ -64,6 +64,6 @@ export function sakuraEffect() {
         //window.requestAnimationFrame 与 requestAnimationFrame 相同
         window.requestAnimationFrame(drawSakura);
     }
-    
+
     window.requestAnimationFrame(drawSakura);
 }
