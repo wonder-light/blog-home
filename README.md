@@ -1,8 +1,8 @@
-[home-url]: http://www.nianian.cn
+[home-url]: http://home.nianian.cn
 
-[home-image-url]: http://www.nianian.cn/img/home.jpg
+[home-image-url]: http://home.nianian.cn/img/home.jpg
 
-[home-favicon]: http://www.nianian.cn/img/icon/favicon-128x128.png
+[home-favicon]: http://home.nianian.cn/img/icon/favicon-128x128.png
 
 
 <div style="display: flex;justify-content: center;">
@@ -24,6 +24,6 @@
 
 主页站点
 
-[http://www.nianian.cn][home-url]
+[http://home.nianian.cn][home-url]
 
 </div>
