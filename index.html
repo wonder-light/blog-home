@@ -51,13 +51,7 @@
     </ul>
   </div>
   <div class="relative w-full h-full" id="love">
-    <div class="fixed sidebar" id="sidebar">
-      <div class="relative cursor-pointer flex items-center justify-center sidebar-content">
-        <i class="fa fa-moon-o"></i>
-        <span class="absolute nowrap bold transition-normal">切换<b class="sidebarDarkText">暗</b>色</span>
-      </div>
-    </div>
-    <div class="relative w-full h-full love-content transition-normal">
+    <div id="default-theme" class="relative w-full h-full love-content transition-normal">
       <div class="absolute cloud"></div>
       <div class="absolute cloud"></div>
       <div class="absolute cloud"></div>
@@ -105,6 +99,24 @@
           <div></div>
           <div></div>
         </div>
+      </div>
+      <div class="fixed sidebar flex" style="right: 110px;">
+        <div class="relative cursor-pointer flex items-center justify-center sidebar-content" id="switch-color">
+          <i class="fa fa-moon-o"></i>
+          <span class="absolute nowrap bold transition-normal">切换<b class="sidebarDarkText">暗</b>色</span>
+        </div>
+      </div>
+    </div>
+    
+    <div id="star-theme" class="origin absolute inset-center transform-preserve" style="display: none;">
+      <div class="control transform-preserve">
+        <div class="galaxy flex items-center justify-center transform-preserve" id="galaxy"></div>
+      </div>
+    </div>
+    
+    <div class="fixed sidebar flex">
+      <div class="relative cursor-pointer flex items-center justify-center sidebar-content" id="switch-theme">
+        <i class="fa fa-repeat"></i>
       </div>
     </div>
   </div>

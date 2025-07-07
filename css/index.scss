@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* 获取太阳或者月亮的背景 */
 @mixin sun-bg($bg:#ff6e51, $start:1, $end:4) {
   @for $i from $start through $end {
@@ -44,6 +46,11 @@
   --titleColor: #8841a7;
   --titleShadow: 2px 2px 0px #ffffffcc, 0 0 10px #0000007f;
   --iconShadow: 0 0 2px white;
+}
+
+:root[theme=star] {
+  --bgColor: #0e0220;
+  --titleColor: #bd83e7;
 }
 
 @font-face {
@@ -210,6 +217,10 @@ ul {
 
 .title-shadow {
   text-shadow: var(--titleShadow);
+}
+
+.transform-preserve {
+  transform-style: preserve-3d;
 }
 
 #sakura-id {
@@ -649,5 +660,83 @@ ul {
   100% {
     transform: translateX(-45px) translateY(-330px) scale(4.3);
     opacity: 0;
+  }
+}
+
+.origin {
+  transform: translate3d(0vw, 0vh, 0vmin);
+
+  *:before, *:after {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.control {
+  transform: scale3d(0, 0, 0);
+  animation: control-appear 10s linear forwards;
+}
+
+/* 获取范围内的随机数 */
+@function rand($min, $max) {
+  $min: $min * 100;
+  $max: $max * 100;
+  @return math.div(random($max - $min + 1) - 1 + $min, 100);
+}
+
+/* 生成星星 */
+@mixin generate-star($start:1, $end:300) {
+  @for $i from $start through $end {
+    &:nth-of-type(#{$i}) {
+      $colo: rgb(random(255), random(255), random(255));
+      --size: #{rand(0.1, 0.9)}vmin;
+      --background: #{$colo};
+      --shadow: 0 0 #{rand(0.1, 0.9)}vmin #{rand(0.01, 0.20)}vmin #{$colo};
+      --transform: rotate3d(1, 0, 0, #{rand(1, 360)}deg) rotate3d(0, 1, 0, #{rand(1, 360)}deg) rotate3d(0, 0, 1, #{rand(1, 360)}deg) translate3d(0, 0, #{rand(68, 90)}vmin);
+    }
+  }
+}
+
+.galaxy {
+  animation: galaxy-rotation 10s linear infinite;
+
+  .star, .star:before, .star:after {
+    @extend .absolute;
+    @extend .transform-preserve;
+  }
+
+  .star {
+    @include generate-star();
+
+    &:before, &:after {
+      background: var(--background);
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+      content: "";
+      height: var(--size);
+      width: var(--size);
+    }
+
+    &:before {
+      transform: var(--transform);
+    }
+
+    &:after {
+      transform: scale3d(-1, -1, -1) var(--transform);
+    }
+  }
+}
+
+@keyframes control-appear {
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes galaxy-rotation {
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
   }
 }

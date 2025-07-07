@@ -1,7 +1,7 @@
 /**
  * 首页动画
  */
-export function loveAnimation() {
+function loveAnimation() {
     // 获取元素
     let sun = document.getElementById('sun');
     let Moon = document.getElementById('Moon');
@@ -25,13 +25,13 @@ export function loveAnimation() {
 /**
  * 主题修改
  */
-export function changeTheme() {
+function changeTheme() {
     // 获取主题配置
     let theme = localStorage.getItem('theme');
 
     // 没有配置则初始化
     if (theme == null) {
-        window.localStorage.setItem('theme', theme = 'white');
+        localStorage.setItem('theme', theme = 'white');
     }
 
     // 循环修改配色
@@ -54,7 +54,7 @@ export function changeTheme() {
 /**
  * 点击切换主题
  */
-export function clickChangeTheme() {
+function clickChangeTheme() {
     localStorage.setItem('theme', localStorage.getItem('theme') === 'white' ? 'dark' : 'white');
     changeTheme();
 }
@@ -63,7 +63,7 @@ export function loveMain() {
     // 注册滚动事件
     document.addEventListener('scroll', loveAnimation, true);
     //注册修改主题的点击事件
-    document.getElementById('sidebar').addEventListener('click', clickChangeTheme);
+    document.getElementById('switch-color').addEventListener('click', clickChangeTheme);
     // 主题修改
     changeTheme();
 }
