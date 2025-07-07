@@ -14,6 +14,12 @@ on:
     branches:
       - main  # 这里的意思是当 main 分支发生 push 的时候，运行下面的 jobs
 
+# 设置GITHUB_TOKEN的权限，允许部署到GitHub页面
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   # 部署作业，因为我们只是在部署
   deploy:
